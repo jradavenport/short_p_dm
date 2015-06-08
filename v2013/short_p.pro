@@ -1,6 +1,6 @@
 pro short_p
 set_plot,'X'
-;spawn,'ls *.lc > lc.lis'
+spawn,'ls *.lc > lc.lis'
 readcol,'lc.lis',file,f='(A)',/silent
 cubehelix,rot=-0.5
 !p.font=0
@@ -8,7 +8,7 @@ cubehelix,rot=-0.5
 
 set_plot,'ps'
 for n=0L,n_elements(file)-1 do begin
-   readcol,file[n],t,f,e,q,f='(X,X,D,X,X,D,D,X,X,I)',/silent
+   readcol,file[n],q,t,f,e,f='(X,X,I,X,D,X,X,D,D)',/silent
 
    x = where(f gt 1d3)
    t = t[x]
@@ -33,7 +33,7 @@ for n=0L,n_elements(file)-1 do begin
 ;   remove,where(1./freq gt 100),freq,pwr
 
    per = 1./freq[j]
-   if n eq 19 then per = per*2d0
+   ;if n eq 19 then per = per*2d0
 
 ;   plot,t mod per,(f-med_f)/med_f
 
@@ -42,8 +42,9 @@ for n=0L,n_elements(file)-1 do begin
    print,file[n]
 
 
-;; set_plot,'X'
-;; stop
+   ;; set_plot,'X'
+   ;; plot,t,f
+   ;; stop
 
 
 
